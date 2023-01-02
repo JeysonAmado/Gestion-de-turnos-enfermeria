@@ -1,69 +1,54 @@
 const express = require('express');
-const chance = require('chance');
-const { Chance } = require('chance');
+const validatorHandler = require('../Middlewares/ValidatorHandler');
+const { createNurseSchema,updateNurseSchema,getNurseSchema } = require('../Schemas/NurseSchema');
+const NurseServices = require('./../Services/NurseService');
 const router = express.Router();
+const service = new NurseServices();
 
 
-router.get("/" , (request,response) => {
-    let enfermeras = []
-    const {size} = request.query;
-    let random = new Chance();
-    const limit= size || 10;
-    for (let index = 0; index < limit; index++) {
-
-        enfermeras.push({
-            name: random.name(),
-            gender: random.gender(),
-            birthday: random.birthday({string: true})
-            //name: 'Andrea'
-        })
-    } 
+router.get("/" , async (request,response) => {
+    const enfermeras = await service.index(); 
     response.json(enfermeras);
 });
 
-router.get("/:idEnfermera/", (request,response) => {
+router.get("/:idEnfermera/", validatorHandler.validatorHandler(getNurseSchema,'params'),
+async (request,response) => {
     const {idEnfermera} = request.params;
-
-    response.json(
-        {
-            idEnfermera,
-            name: 'Jimena',
-            area: 'Pediatria'
-        }
-    );
-
+    const nurse = await service.find(idEnfermera);
+    response.json(nurse);
 });
 
 router.post("/", (req,res) => {
     const body = req.body;
-    res.status(201).json({
-        message: 'Created',
-        data: body
-    });
+    newNurse = service.create(body);
+    res.status(201).json(newNurse);
 });
 
-router.patch("/:idNurse" , (req,res) => {
-    const { idNurse } = req.params;
-    const body = req.body;
-    if(idNurse=999){
-        res.status(404).json({
-            message: 'Not Found',
-        data: body, idNurse
-        })
+router.patch("/:idEnfermera" , (req,res,next) => {
+    try {
+        const { idEnfermera } = req.params;
+        const body = req.body;
+        nurseUpdated = service.update(idEnfermera,body); 
+        res.json(nurseUpdated);
+    } catch (error) {
+        next(error);
     }
-    res.json({
-        message: 'Update',
-        data: body, idNurse
-    });
+    
 });
 
-router.delete("/:idNurse" , (req,res) => {
-    const { idNurse } = req.params;
-    const body = req.body;
-    res.json({
-        message: 'Delete',
-        data: body, idNurse
-    });
+router.delete("/:idNurse" , (req,res,next) => {
+    try {
+        const { idNurse } = req.params;
+        const body = req.body;
+        nurseDeleted = service.delete(idNurse);
+        res.json({
+            message: 'Delete',
+            data: nurseDeleted 
+        });
+    } catch (error) {
+        next(error);
+    }
+    
 })
 
 module.exports = router;
