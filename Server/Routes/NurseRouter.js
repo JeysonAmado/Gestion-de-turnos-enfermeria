@@ -1,69 +1,42 @@
 const express = require('express');
-const chance = require('chance');
-const { Chance } = require('chance');
+const NurseController = require('../Controller/NurseController');
 const router = express.Router();
 
+const controller= new NurseController();
 
-router.get("/" , (request,response) => {
-    let enfermeras = []
-    const {size} = request.query;
-    let random = new Chance();
-    const limit= size || 10;
-    for (let index = 0; index < limit; index++) {
-
-        enfermeras.push({
-            name: random.name(),
-            gender: random.gender(),
-            birthday: random.birthday({string: true})
-            //name: 'Andrea'
-        })
-    } 
-    response.json(enfermeras);
+router.get("/" , async (req,res) => {
+    index_nurses=await controller.index();
+    res.send(index_nurses);
 });
 
-router.get("/:idEnfermera/", (request,response) => {
-    const {idEnfermera} = request.params;
-
-    response.json(
-        {
-            idEnfermera,
-            name: 'Jimena',
-            area: 'Pediatria'
-        }
-    );
+router.get("/:idNurse/",async (req,res) => {
+    const {idNurse} = req.params;
+    nurseFound=await controller.find(idNurse);
+    res.send(nurseFound);
 
 });
 
 router.post("/", (req,res) => {
     const body = req.body;
+    newNurse=controller.create(body);
     res.status(201).json({
-        message: 'Created',
-        data: body
+        message: newNurse
     });
 });
 
 router.patch("/:idNurse" , (req,res) => {
-    const { idNurse } = req.params;
+    const {idNurse} = req.params;
     const body = req.body;
-    if(idNurse=999){
-        res.status(404).json({
-            message: 'Not Found',
-        data: body, idNurse
-        })
-    }
-    res.json({
-        message: 'Update',
-        data: body, idNurse
+    nurseFound=controller.update(idNurse,body);
+    res.status(201).json({
+        message: nurseFound
     });
 });
 
 router.delete("/:idNurse" , (req,res) => {
-    const { idNurse } = req.params;
-    const body = req.body;
-    res.json({
-        message: 'Delete',
-        data: body, idNurse
-    });
+    const {idNurse} = req.params;
+    nurseFound=controller.delete(idNurse);
+    res.send(nurseFound);
 })
 
 module.exports = router;
