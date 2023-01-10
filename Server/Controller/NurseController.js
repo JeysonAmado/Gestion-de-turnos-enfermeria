@@ -1,4 +1,6 @@
 const getAllNurses = require("../Model/NurseEntity");
+const {models} = require('../Model/DatabaseConnection');
+
 
 
 
@@ -17,7 +19,7 @@ class NurseController {
     async index(){
         return new Promise( (resolve,reject) => {
             setTimeout(() => {
-                const nurses = getAllNurses();
+                const nurses = models.Beds.findAll();
                 resolve(nurses);
             }, 2000);
         });

@@ -1,23 +1,16 @@
-const {Client} = require('pg');
+const Sequelize = require('sequelize');
+const setupModels = require('./BaseModel');
+require('dotenv').config();
 
-async function getConnectionDatabase(){
-    try {
-        const client = new Client({
-            host: 'localhost',
-            port: 5432,
-            user: 'jeyson',
-            password: 'secret',
-            database: 'nurse_shift_change'
-          });
-          
-        await client.connect();
-        console.log('GENERANDO CONEXIÓN')
-        return client;
-    } catch (error) {
-        console.error(error.message);
-    }
-    
-}
+const URI = `postgres://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${process.env.PG_DB}`;
 
+const sequelize = new Sequelize(URI,{
+    dialect: 'postgres',
+    logging: true
+});
 
-module.exports = getConnectionDatabase;
+setupModels(sequelize);
+
+sequelize.sync();
+
+module.exports = sequelize;
