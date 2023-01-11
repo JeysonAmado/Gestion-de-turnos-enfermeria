@@ -1,4 +1,6 @@
 const {Model,DataTypes,Sequelize} = require('sequelize');
+const { PACIENT_TABLE } = require('./PacientModel');
+const { SEVERITY_LEVEL_TABLE } = require('./SeverityLevelModel');
 
 const BEDS_TABLE='beds';
 
@@ -13,16 +15,25 @@ const BedSchema = {
         allowNull: false,
         type: DataTypes.STRING        
     },
-    severity_level: {
+    in_use: {
         allowNull: false,
-        type: DataTypes.STRING        
+        type: DataTypes.BOOLEAN        
+    },
+    severity_level_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: {
+            model: SEVERITY_LEVEL_TABLE,
+            key: 'id'
+        }        
     }
 }
 
 class Bed extends Model {
 
-    static associations(){
-
+    static associate(models){
+        this.hasMany(models.Pacients, {as : PACIENT_TABLE });
+        this.belongsTo(models.SeverityLevels, {as: SEVERITY_LEVEL_TABLE});        
     }
 
     static config(sequelize){

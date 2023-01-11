@@ -1,4 +1,4 @@
-const getAllNurses = require("../Model/NurseEntity");
+const getAllNurses = require("../Model/NurseModel");
 const {models} = require('../Model/DatabaseConnection');
 
 
