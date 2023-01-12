@@ -27,32 +27,14 @@ const NurseSchema = {
     charge_id: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        references: {
-            model: NURSE_CHARGE_TABLE,
-            key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
     },
     shift_id: {
         allowNull: false,
         type: DataTypes.INTEGER ,
-        references: {
-            model: NURSE_SHIFT_TABLE,
-            key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'       
     },
     area_id: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        references: {
-            model: NURSE_AREA_TABLE,
-            key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'        
     },
     user: {
         allowNull: false,

@@ -24,7 +24,10 @@ const SeverityLevelSchema = {
 class SeverityLevel extends Model {
 
     static associate(models){
-        this.hasMany(models.Beds, {as: BEDS_TABLE});
+        this.hasMany(models.Beds, {
+            as: 'severity',
+            foreignKey: 'severity_level_id'
+          });
     }
 
     static config(sequelize){

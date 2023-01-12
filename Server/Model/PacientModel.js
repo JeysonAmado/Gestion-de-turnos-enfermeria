@@ -33,12 +33,6 @@ const PacientSchema = {
     bed_assigned_id: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        references: {
-            model: BEDS_TABLE,
-            key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'    
     },
     pacient_weight: {
         allowNull: false,

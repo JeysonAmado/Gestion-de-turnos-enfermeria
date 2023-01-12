@@ -21,19 +21,15 @@ const BedSchema = {
     },
     severity_level_id: {
         allowNull: false,
-        type: DataTypes.INTEGER,
-        references: {
-            model: SEVERITY_LEVEL_TABLE,
-            key: 'id'
-        }        
-    }
+        type: DataTypes.INTEGER 
+    },
+    
 }
 
 class Bed extends Model {
 
     static associate(models){
-        this.hasMany(models.Pacients, {as : PACIENT_TABLE });
-        this.belongsTo(models.SeverityLevels, {as: SEVERITY_LEVEL_TABLE});        
+                
     }
 
     static config(sequelize){
