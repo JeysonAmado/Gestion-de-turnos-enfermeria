@@ -1,7 +1,7 @@
 'use strict';
 
-const { BEDS_TABLE, BedSchema } = require('../../Model/BedsModel');
-const { SEVERITY_LEVEL_TABLE } = require('../../Model/SeverityLevelModel');
+const { BEDS_TABLE, BedSchema } = require('../../Model/Pacients/BedsModel');
+const { SEVERITY_LEVEL_TABLE } = require('../../Model/Pacients/SeverityLevelModel');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {

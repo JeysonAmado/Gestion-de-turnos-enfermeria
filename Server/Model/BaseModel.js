@@ -1,10 +1,10 @@
-const {Bed, BedSchema } = require('./BedsModel');
-const { NurseArea, NurseAreaSchema } = require('./NurseArea');
-const { NurseCharge, NurseChargeSchema } = require('./NurseChargeModel');
-const { Nurse, NurseSchema } = require('./NurseModel');
-const { NurseShift, NurseShiftSchema } = require('./NurseShift');
-const { Pacient, PacientSchema } = require('./PacientModel');
-const { SeverityLevel, SeverityLevelSchema } = require('./SeverityLevelModel');
+const {Bed, BedSchema } = require('./Pacients/BedsModel');
+const { NurseArea, NurseAreaSchema } = require('./Nurses/NurseAreaModel');
+const { NurseCharge, NurseChargeSchema } = require('./Nurses/NurseChargeModel');
+const { Nurse, NurseSchema } = require('./Nurses/NurseModel');
+const { NurseShift, NurseShiftSchema } = require('./Nurses/NurseShiftModel');
+const { Pacient, PacientSchema } = require('./Pacients/PacientModel');
+const { SeverityLevel, SeverityLevelSchema } = require('./Pacients/SeverityLevelModel');
 
 function setupModels(sequelize){
     SeverityLevel.init(SeverityLevelSchema,SeverityLevel.config(sequelize));

@@ -1,12 +1,12 @@
 'use strict';
 
-const { BEDS_TABLE, BedSchema } = require('../../Model/BedsModel');
-const { NURSE_AREA_TABLE, NurseAreaSchema } = require('../../Model/NurseArea');
-const { NURSE_CHARGE_TABLE, NurseChargeSchema } = require('../../Model/NurseChargeModel');
-const { NURSE_TABLE, NurseSchema } = require('../../Model/NurseModel');
-const { NURSE_SHIFT_TABLE, NurseShiftSchema } = require('../../Model/NurseShift');
-const { PACIENT_TABLE, PacientSchema } = require('../../Model/PacientModel');
-const { SEVERITY_LEVEL_TABLE, SeverityLevelSchema } = require('../../Model/SeverityLevelModel');
+const { BEDS_TABLE, BedSchema } = require('../../Model/Pacients/BedsModel');
+const { NURSE_AREA_TABLE, NurseAreaSchema } = require('../../Model/Nurses/NurseAreaModel');
+const { NURSE_CHARGE_TABLE, NurseChargeSchema } = require('../../Model/Nurses/NurseChargeModel');
+const { NURSE_TABLE, NurseSchema } = require('../../Model/Nurses/NurseModel');
+const { NURSE_SHIFT_TABLE, NurseShiftSchema } = require('../../Model/Nurses/NurseShiftModel');
+const { PACIENT_TABLE, PacientSchema } = require('../../Model/Pacients/PacientModel');
+const { SEVERITY_LEVEL_TABLE, SeverityLevelSchema } = require('../../Model/Pacients/SeverityLevelModel');
 
 
 /** @type {import('sequelize-cli').Migration} */

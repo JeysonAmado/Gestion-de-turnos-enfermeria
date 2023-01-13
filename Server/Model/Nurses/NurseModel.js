@@ -1,7 +1,7 @@
 const {Model,DataTypes,Sequelize} = require('sequelize');
-const { NURSE_AREA_TABLE } = require('./NurseArea');
+const { NURSE_AREA_TABLE } = require('./NurseAreaModel');
 const { NURSE_CHARGE_TABLE } = require('./NurseChargeModel');
-const { NURSE_SHIFT_TABLE } = require('./NurseShift');
+const { NURSE_SHIFT_TABLE } = require('./NurseShiftModel');
 
 const NURSE_TABLE='nurses';
 

@@ -1,9 +1,9 @@
 'use strict';
 
-const { NURSE_AREA_TABLE } = require('../../Model/NurseArea');
-const { NURSE_CHARGE_TABLE } = require('../../Model/NurseChargeModel');
-const { NurseSchema, NURSE_TABLE } = require('../../Model/NurseModel');
-const { NURSE_SHIFT_TABLE } = require('../../Model/NurseShift');
+const { NURSE_AREA_TABLE } = require('../../Model/Nurses/NurseAreaModel');
+const { NURSE_CHARGE_TABLE } = require('../../Model/Nurses/NurseChargeModel');
+const { NurseSchema, NURSE_TABLE } = require('../../Model/Nurses/NurseModel');
+const { NURSE_SHIFT_TABLE } = require('../../Model/Nurses/NurseShiftModel');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
