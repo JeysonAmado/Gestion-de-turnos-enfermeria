@@ -1,5 +1,5 @@
 const {Model,DataTypes,Sequelize} = require('sequelize');
-const { BEDS_TABLE } = require('./BedsModel');
+
 
 const SEVERITY_LEVEL_TABLE='severity_levels';
 

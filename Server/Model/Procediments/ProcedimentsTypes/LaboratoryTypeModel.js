@@ -1,31 +1,22 @@
 const {Model,DataTypes,Sequelize} = require('sequelize');
 
 
-const BEDS_TABLE='beds';
+const LABORATORY_TYPE_TABLE='laboratories_types';
 
-const BedSchema = {
+const LaboratoryTypeSchema = {
     id: {
         allowNull: false,
         autoIncrement:true,
         primaryKey: true,
         type: DataTypes.INTEGER        
     },
-    number_bed: {
+    laboratory_type_name: {
         allowNull: false,
         type: DataTypes.STRING        
     },
-    in_use: {
-        allowNull: false,
-        type: DataTypes.BOOLEAN        
-    },
-    severity_level_id: {
-        allowNull: false,
-        type: DataTypes.INTEGER 
-    },
-    
 }
 
-class Bed extends Model {
+class LaboratoryType extends Model {
 
     static associate(models){
                 
@@ -34,12 +25,12 @@ class Bed extends Model {
     static config(sequelize){
         return {
             sequelize,
-            tableName: BEDS_TABLE,
-            modelName: 'Beds',    
+            tableName: LABORATORY_TYPE_TABLE,
+            modelName: 'LaboratoryTypes',    
             timestamps: false
         }
     }
 
 }
 
-module.exports = {BEDS_TABLE, BedSchema, Bed}
+module.exports = {LABORATORY_TYPE_TABLE, LaboratoryTypeSchema, LaboratoryType}
