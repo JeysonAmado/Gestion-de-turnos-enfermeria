@@ -14,6 +14,10 @@ const ProbeTypeSchema = {
         allowNull: false,
         type: DataTypes.STRING        
     },
+    type: {
+        allowNull: false,
+        type: DataTypes.STRING        
+    },
 }
 
 class ProbeType extends Model {

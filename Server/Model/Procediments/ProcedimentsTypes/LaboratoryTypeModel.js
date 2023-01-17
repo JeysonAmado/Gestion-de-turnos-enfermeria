@@ -14,6 +14,10 @@ const LaboratoryTypeSchema = {
         allowNull: false,
         type: DataTypes.STRING        
     },
+    type: {
+        allowNull: false,
+        type: DataTypes.STRING        
+    },
 }
 
 class LaboratoryType extends Model {

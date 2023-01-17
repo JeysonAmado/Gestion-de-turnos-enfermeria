@@ -14,6 +14,10 @@ const DiagnosticImagesTypeSchema = {
         allowNull: false,
         type: DataTypes.STRING        
     },
+    type: {
+        allowNull: false,
+        type: DataTypes.STRING        
+    },
 }
 
 class DiagnosticImageType extends Model {
