@@ -1,6 +1,4 @@
-const getAllNurses = require("../Model/NurseEntity");
-const {models} = require('../Model/DatabaseConnection');
-
+const { sequelize } = require("../Database/DatabaseConnection");
 
 
 
@@ -19,8 +17,10 @@ class NurseController {
     async index(){
         return new Promise( (resolve,reject) => {
             setTimeout(() => {
-                const nurses = models.Beds.findAll();
-                resolve(nurses);
+                
+                const laboratories_types = sequelize.models.LaboratoryTypes.findAll();
+                //const nurses = models.Beds.findAll();
+                resolve(laboratories_types);
             }, 2000);
         });
     }

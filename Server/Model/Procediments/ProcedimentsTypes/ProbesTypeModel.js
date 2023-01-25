@@ -1,39 +1,40 @@
 const {Model,DataTypes,Sequelize} = require('sequelize');
 
-const BEDS_TABLE='beds';
 
-const BedSchema = {
+const PROBE_TYPE_TABLE='probes_types';
+
+const ProbeTypeSchema = {
     id: {
         allowNull: false,
         autoIncrement:true,
         primaryKey: true,
         type: DataTypes.INTEGER        
     },
-    number_bed: {
+    probe_type_name: {
         allowNull: false,
         type: DataTypes.STRING        
     },
-    severity_level: {
+    type: {
         allowNull: false,
         type: DataTypes.STRING        
-    }
+    },
 }
 
-class Bed extends Model {
+class ProbeType extends Model {
 
-    static associations(){
-
+    static associate(models){
+                
     }
 
     static config(sequelize){
         return {
             sequelize,
-            tableName: BEDS_TABLE,
-            modelName: 'Beds',    
+            tableName: PROBE_TYPE_TABLE,
+            modelName: 'ProbeTypes',    
             timestamps: false
         }
     }
 
 }
 
-module.exports = {BEDS_TABLE, BedSchema, Bed}
+module.exports = {PROBE_TYPE_TABLE, ProbeTypeSchema, ProbeType}
